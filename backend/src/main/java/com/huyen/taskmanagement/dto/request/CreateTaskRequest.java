@@ -2,9 +2,7 @@ package com.huyen.taskmanagement.dto.request;
 
 import com.huyen.taskmanagement.enums.TaskPriority;
 import com.huyen.taskmanagement.enums.TaskStatus;
-import jakarta.validation.constraints.FutureOrPresent;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -13,6 +11,7 @@ import java.time.LocalDate;
 public class CreateTaskRequest {
 
     @NotBlank(message = "Title is required")
+    @Size(max = 200, message = "Title must not exceed 200 characters")
     private String title;
 
     private String description;
@@ -29,8 +28,10 @@ public class CreateTaskRequest {
     @FutureOrPresent(message = "Due date must be today or later")
     private LocalDate dueDate;
 
+    @PositiveOrZero(message = "Estimated hours must be zero or greater")
     private Integer estimatedHours;
 
     @NotNull(message = "Assignee is required")
+    @Positive(message = "Assignee ID must be greater than 0")
     private Long assigneeId;
 }

@@ -17,7 +17,7 @@ public class TaskResponse {
 
     private TaskPriority priority;
 
-    private String assignee;
+    private String assigneeName;
 
     private LocalDate dueDate;
 
