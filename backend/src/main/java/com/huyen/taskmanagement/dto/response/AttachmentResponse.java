@@ -15,7 +15,7 @@ public class AttachmentResponse {
 
     private Long fileSize;
 
-    private String uploadedBy;
+    private String uploadedByName;
 
     private LocalDateTime createdAt;
 
