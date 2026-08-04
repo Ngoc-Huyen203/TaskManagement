@@ -34,6 +34,6 @@ public class TaskDetailResponse {
 
     private List<AttachmentResponse> attachments;
 
-    private List<TaskHistoryResponse> history;
+    private List<TaskHistoryResponse> histories;
 
 }
