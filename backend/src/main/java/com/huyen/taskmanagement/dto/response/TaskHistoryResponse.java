@@ -17,7 +17,7 @@ public class TaskHistoryResponse {
 
     private String newValue;
 
-    private String user;
+    private String userName;
 
     private LocalDateTime createdAt;
 
