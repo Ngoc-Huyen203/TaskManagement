@@ -16,9 +16,9 @@ public interface TaskAttachmentRepository extends JpaRepository<TaskAttachment, 
 
     List<TaskAttachment> findByTaskIdAndDeletedFalse(Long taskId);
 
-    List<TaskAttachment> findByUser(User user);
+    List<TaskAttachment> findByUploadedBy(User uploadedBy);
 
-    List<TaskAttachment> findByUserId(Long userId);
+    List<TaskAttachment> findByUploadedById(Long userId);
 
     Optional<TaskAttachment> findByIdAndDeletedFalse(Long id);
 

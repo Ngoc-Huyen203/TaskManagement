@@ -8,6 +8,7 @@ import com.huyen.taskmanagement.entity.User;
 import org.mapstruct.*;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -73,4 +74,6 @@ public interface UserMapper {
                 .map(Role::getName)
                 .collect(Collectors.toSet());
     }
+
+    List<UserResponse> toResponseList(List<User> users);
 }
