@@ -9,6 +9,7 @@ import com.huyen.taskmanagement.exception.ResourceNotFoundException;
 import com.huyen.taskmanagement.mapper.UserMapper;
 import com.huyen.taskmanagement.repository.UserRepository;
 import com.huyen.taskmanagement.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,10 +19,12 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper) {
+    public UserServiceImpl(UserRepository userRepository, UserMapper userMapper, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.userMapper = userMapper;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // TODO(Security): Encode password before saving user.
@@ -47,7 +50,7 @@ public class UserServiceImpl implements UserService {
         User user = userMapper.toEntity(request);
 
         // TODO: Encode password after integrating Spring Security
-        // user.setPassword(passwordEncoder.encode(request.getPassword()));
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
 
         User saveUser = userRepository.save(user);
 
